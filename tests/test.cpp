@@ -66,7 +66,7 @@ TEST(Task2, StatisticsAlphabet) {
     EXPECT_EQ(8, cnt);
   }
 
-  StatisticsAlphabet("ABCDEabdeZ", stat);
+  StatisticsAlphabet("ABCDEabcdeZ", stat);
   ASSERT_EQ(26, stat.size());
   EXPECT_EQ(2, stat[0]);
   EXPECT_EQ(2, stat[1]);
@@ -85,22 +85,17 @@ TEST(Task3, Find3Max) {
   EXPECT_EQ(0, max_index);
   EXPECT_EQ(0, second_max_index);
   EXPECT_EQ(0, third_max_index);
-
-  Find3Max({0, 1}, max_index, second_max_index, third_max_index);
-  EXPECT_EQ(1, max_index);
-  EXPECT_EQ(0, second_max_index);
-  EXPECT_EQ(0, third_max_index);
-
+  
   Find3Max({0, 1, 2}, max_index, second_max_index, third_max_index);
   EXPECT_EQ(2, max_index);
   EXPECT_EQ(1, second_max_index);
   EXPECT_EQ(0, third_max_index);
 
-  Find3Max({0, 1, 2, 3, 4, 0, 1, 3}, max_index, second_max_index,
+  Find3Max({0, 1, 1, 3, 4, 0, 1, 2}, max_index, second_max_index,
            third_max_index);
   EXPECT_EQ(4, max_index);
   EXPECT_EQ(3, second_max_index);
-  EXPECT_EQ(3, third_max_index);
+  EXPECT_EQ(7, third_max_index);
 
   Find3Max({0, 1, 2, 3, 4, 0, 1, 0}, max_index, second_max_index,
            third_max_index);
@@ -139,7 +134,7 @@ TEST(Task6, GenerateCandidates) {
 }
 
 TEST(Tasks, Compose) {
-  std::string cipher_text = "a";
+  std::string cipher_text = "avilvyuvaavilaohapzaolxblzapvu";
 
   std::vector<size_t> stat;
   StatisticsAlphabet(cipher_text, stat);
@@ -150,8 +145,8 @@ TEST(Tasks, Compose) {
   Find3Max(stat, max_index, second_max_index, third_max_index);
 
   EXPECT_EQ('a', IndexToSymbol(max_index));
-  EXPECT_EQ('b', IndexToSymbol(second_max_index));
-  EXPECT_EQ('c', IndexToSymbol(third_max_index));
+  EXPECT_EQ('v', IndexToSymbol(second_max_index));
+  EXPECT_EQ('l', IndexToSymbol(third_max_index));
 
   std::vector<size_t> candidate_keys = {
       GetKey(max_index),
@@ -159,11 +154,15 @@ TEST(Tasks, Compose) {
       GetKey(third_max_index),
   };
 
+  EXPECT_EQ(22, candidate_keys[0]);
+  EXPECT_EQ(17, candidate_keys[1]);
+  EXPECT_EQ(7, candidate_keys[2]);
+
   std::vector<std::string> candidates;
   GenerateCandidates(cipher_text, candidate_keys, candidates);
 
   ASSERT_EQ(3, candidates.size());
-  EXPECT_EQ("a", candidates[0]);
-  EXPECT_EQ("a", candidates[1]);
-  EXPECT_EQ("a", candidates[2]);
+  EXPECT_EQ("ezmpzcyzeezmpesletdespbfpdetzy", candidates[0]);
+  EXPECT_EQ("jeruehdejjerujxqjyijxugkuijyed", candidates[1]);
+  EXPECT_EQ("tobeornottobethatisthequestion", candidates[2]);
 }

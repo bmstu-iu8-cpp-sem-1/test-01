@@ -3,6 +3,8 @@
 #ifndef INCLUDE_CAESER_HPP_
 #define INCLUDE_CAESER_HPP_
 
+#include <algorithm>
+#include <cctype>
 #include <string>
 #include <vector>
 
@@ -22,4 +24,4 @@ void GenerateCandidates(const std::string& cipher_text,
                         const std::vector<size_t>& keys,
                         std::vector<std::string>& candidates);
 
-#endif // INCLUDE_CAESER_HPP_
+#endif  // INCLUDE_CAESER_HPP_
