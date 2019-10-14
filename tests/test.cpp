@@ -133,9 +133,9 @@ TEST(Task6, GenerateCandidates) {
   std::vector<std::string> candidates;
   GenerateCandidates("defg", {1, 2, 3}, candidates);
   ASSERT_EQ(3, candidates.size());
-  EXPECT_EQ("cdef", candidates);
-  EXPECT_EQ("bcde", candidates);
-  EXPECT_EQ("abcd", candidates);
+  EXPECT_EQ("cdef", candidates[0]);
+  EXPECT_EQ("bcde", candidates[1]);
+  EXPECT_EQ("abcd", candidates[2]);
 }
 
 TEST(Tasks, Compose) {
