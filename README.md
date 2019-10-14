@@ -41,7 +41,7 @@ void StatisticsAlphabet(const std::string& str, std::vector<size_t>& out_statist
 
 Функция заполняет массив `|out_statistic|` основываясь на строке `|str|`. Индекс для символа `a` должен равняться 0, а для `z` - 25.
 
-##### Hint
+##### Hints
 1. Используйте [функцию `std::tolower`](https://en.cppreference.com/w/cpp/string/byte/tolower)
 2. Для переменных типа char тоже применимы арифметические операторы. Например,
 ```cpp
@@ -64,6 +64,11 @@ v[14] = -100;
 void Find3Max(const std::vector<size_t>& statistics, size_t& max_index, size_t& second_max_index, size_t& third_max_index);
 ```
 
+##### Hints
+1. Воспользуйтесь банальной сортировкой...
+2. Сортировкой не одного массива.
+
+
 
 ### Задание 4  (1 балл)
 Хм... нашли индексы максимальных элементов, а давайте найдем соответсвующие им символы.
@@ -82,6 +87,7 @@ char IndexToSymbol(size_t index);
 ```cpp
 std::string Decrypt(const std::string& cipher_text, size_t key);
 ```
+
 
 ### Задание 6  (1 балл)
 Как уже говорили, самая используемая буква в английском языке это `E`, а самя редко встречаемая - `Z`.
@@ -103,6 +109,10 @@ void GenerateCandidates(const std::string& cipher_text,
 ```
 
 В `|candidates|` должен получиться массив из кандидатов открытого текста на основе ключей из `|keys|` и шифр-текста `|cipher_text|`.
+
+##### Hints
+1. Воспользуйтесь методом `std::vector::resize`, чтобы изменить размер массива `|candidates|`.
+1. Воспользуйтесь функцией `Decrypt`.
 
 
 ### Задание 7  (12 баллов)
