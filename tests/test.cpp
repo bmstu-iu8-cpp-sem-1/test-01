@@ -6,7 +6,7 @@
 
 namespace {
 size_t GetKey(size_t index) {
-  size_t key = 26 + IndexToSymbol(max_index) - 'e';
+  size_t key = 26 + IndexToSymbol(index) - 'e';
   return key % 26;
 }
 }  // namespace
@@ -118,7 +118,7 @@ TEST(Task4, IndexToSymbol) {
   EXPECT_EQ('f', IndexToSymbol(5));
 
   EXPECT_EQ('x', IndexToSymbol(23));
-  EXPECT_EQ('y', IndexToSymbol(24);
+  EXPECT_EQ('y', IndexToSymbol(24));
   EXPECT_EQ('z', IndexToSymbol(25));
 }
 
